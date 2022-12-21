@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace CleanArch.Persistence.IntegrationTests
+namespace CustomerData.Persistence.IntegrationTests
 {
     public class Tests
     {

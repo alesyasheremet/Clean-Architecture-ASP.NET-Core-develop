@@ -1,10 +1,10 @@
-﻿using CleanArch.Application.Contracts.Persistence;
-using CleanArch.Domain.Entities;
+﻿using CustomerData.Application.Contracts.Persistence;
+using CustomerData.Domain.Entities;
 using Moq;
 using System;
 using System.Collections.Generic;
 
-namespace CleanArch.Common.UnitTests.Mocks
+namespace CustomerData.Common.UnitTests.Mocks
 {
 
     public static class RepositoryMocks

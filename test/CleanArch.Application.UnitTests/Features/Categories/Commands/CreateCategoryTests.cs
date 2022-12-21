@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using CleanArch.Application.Contracts.Persistence;
-using CleanArch.Application.Features.Categories.Commands.CreateCategory;
-using CleanArch.Application.Profiles;
-using CleanArch.Common.UnitTests.Mocks;
+using CustomerData.Application.Contracts.Persistence;
+using CustomerData.Application.Features.Categories.Commands.CreateCategory;
+using CustomerData.Application.Profiles;
+using CustomerData.Common.UnitTests.Mocks;
 using Moq;
 using NUnit.Framework;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanArch.Application.UnitTests.Features.Categories.Commands
+namespace CustomerData.Application.UnitTests.Features.Categories.Commands
 {
     public class CreateCategoryTests
     {

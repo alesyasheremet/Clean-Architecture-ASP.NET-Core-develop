@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using CleanArch.Application.Contracts.Persistence;
-using CleanArch.Application.Features.Categories.Queries.GetCategoriesList;
-using CleanArch.Application.Profiles;
-using CleanArch.Common.UnitTests.Mocks;
+using CustomerData.Application.Contracts.Persistence;
+using CustomerData.Application.Features.Categories.Queries.GetCategoriesList;
+using CustomerData.Application.Profiles;
+using CustomerData.Common.UnitTests.Mocks;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanArch.Application.UnitTests.Features.Categories.Queries
+namespace CustomerData.Application.UnitTests.Features.Categories.Queries
 {
     public class GetCategoriesListQueryHandlerTests
     {

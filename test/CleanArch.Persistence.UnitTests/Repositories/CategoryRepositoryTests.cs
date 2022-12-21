@@ -1,4 +1,4 @@
-﻿namespace CleanArch.Persistence.UnitTests.Repositories
+﻿namespace CustomerData.Persistence.UnitTests.Repositories
 {
     public class CategoryRepositoryTests
     {
