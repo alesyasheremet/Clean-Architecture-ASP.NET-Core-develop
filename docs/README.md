@@ -4,21 +4,6 @@
   <a href="#">
     <img src="img/logo.png" alt="Logo" width="80" height="80">
   </a>
-
-  <h3 align="center">Clean Architecture</h3>
-
-  <p align="center">
-    Complete solution template which is built on Clean Architecture with all essential feature using .NET Core!
-    <br />
-    <a href="https://amitpnk.github.io/Clean-Architecture-ASP.NET-Core"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://marketplace.visualstudio.com/items?itemName=AmitNaik.CleanArchitecture">Download from Marketplace</a>
-    ·
-    <a href="https://github.com/Amitpnk/Clean-architecture-ASP.NET-Core/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Amitpnk/Clean-architecture-ASP.NET-Core/issues/new">Request Feature</a>
-  </p>
 </p>
 
 ## Clean Architecture
