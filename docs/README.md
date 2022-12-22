@@ -24,15 +24,6 @@
   </p>
 </p>
 
-## Give a Star! :star:
-If you like or are using this project to learn or start your solution, please give it a star. Thanks!
-
-## Support This Project
-
-If you have found this project helpful, either as a library that you use or as a learning tool, please consider buying me a coffee:
-
-<a href="https://www.buymeacoffee.com/codewithamit" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important" ></a>
-
 ## Clean Architecture
 
 Clean Architecture was introduced by by Robert C. Martin (Uncle Bob) to provide a better way to build applications in perspective of better testability, maintainability, and dependability on the infrastructures like databases and services
@@ -70,22 +61,21 @@ Design Pattern
  
 Backend
 - [x] Language: C#
-- [x] Framework: dotnet core 5, ASP.NET Core
+- [x] Framework: dotnet core 6, ASP.NET Core
 
 UI
-- [ ] Blazor
+- [ ] Blazor, Asp.NetCore Mvc
 
 Database
-- [x] MS SQL and Inmemory DB
+- [x] SQLLite
 - [x] DB Connectivity : Entityframework Core - Code First
 
 Cloud server
-- [x] Azure (deployment script)
+- [x] MiniKube deployment files
+- [x] Docker files
 
 Service
 - [x] Web API (Restful service)
-- [ ] gRPC
-- [ ] Graphql
 
 Feature
 - [x] Dataseeding
@@ -94,39 +84,16 @@ Feature
 - [x] Fluent validation
 - [x] Serilog
 - [x] Swagger UI
-- [x] Advanced Pagination
 - [x] API Versioning
-- [ ] User Auditing
 - [x] Mailkit (Mail service)
-- [ ] Hangfire
-- [ ] Miniprofiler
-- [x] Enabling CORS with CustomPolicy
 
-Authentication
-- [x] JWT Authentication
-
-Monitoring tool
-- [x] Health check UI
-- [ ] Kibana dashboard  
 
 Testing
 - [x] Unit testing (Nunit)
-- [x] Integration testing
 
-Caching
-- [ ] Inmemory Caching
-- [ ] Distributed Redis Caching
 
 CI/CD
-- [ ] Task runner: .Net core and CircleCI
-- [ ] Coverage report: Sonarcloud.io
-- [ ] Quality report: Codacy
-- [ ] Docker image and Kubernate
-- [ ] Cloud server: Azure for cloud
-
-Documentation
-- [x] Conventional commit - commit and commit message    
-- [x] Docsify
+- [ ] Docker images 
 
 ## Licence Used
 
@@ -134,6 +101,3 @@ Documentation
 
 See the contents of the LICENSE file for details
 
-## Contact
-
-Having any issues or troubles getting started? Drop a mail to amit.naik8103@gmail.com or [Raise a Bug or Feature Request](https://github.com/Amitpnk/Clean-architecture-ASP.NET-Core/issues/new). Always happy to help.

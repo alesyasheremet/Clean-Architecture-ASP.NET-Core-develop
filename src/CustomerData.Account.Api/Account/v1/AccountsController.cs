@@ -29,7 +29,8 @@ namespace CustomerData.Api.Account.v1
          
             if (createAccountCommand.InitialCredit > 0)
             {
-                await Mediator.Send(new CreateTransactionCommand() { AccountId = id, Amount = createAccountCommand.InitialCredit, Date = DateTime.Now});
+                //call transaction-api
+                //await Mediator.Send(new CreateTransactionCommand() { AccountId = id, Amount = createAccountCommand.InitialCredit, Date = DateTime.Now});
             }
             return Ok(id);
         }

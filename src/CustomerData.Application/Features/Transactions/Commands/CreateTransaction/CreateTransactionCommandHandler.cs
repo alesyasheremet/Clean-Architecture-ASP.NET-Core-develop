@@ -41,7 +41,7 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
             @transaction = await _transactionRepository.AddAsync(@transaction);
 
             // Todo: Sending email notification to admin address
-            var email = new MailRequest() { ToEmail = "amit.naik8103@gmail.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
+            var email = new MailRequest() { ToEmail = "alesya.sheremet@gmail.com", Body = $"A new transaction was created: {request}", Subject = "A new event was created" };
 
             try
             {

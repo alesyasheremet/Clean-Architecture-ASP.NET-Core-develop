@@ -5,7 +5,6 @@ using CustomerData.CrossCuttingConcerns.OS;
 using CustomerData.CrossCuttingConcerns.Utility;
 using CustomerData.Domain.Services.Configuration;
 using CustomerData.Infrastructure;
-using CustomerData.Infrastructure.Identity;
 using CustomerData.Infrastructure.OS;
 using CustomerData.Persistence;
 using CustomerData.Persistence.Context;
@@ -52,8 +51,6 @@ namespace CustomerData.Api
             services.AddApplicationServices();
 
             services.AddHttpContextAccessor();
-
-            services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
