@@ -123,7 +123,7 @@ namespace CustomerData.Api
 
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerData.Api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerData.Account.Api v1"));
             /*
             app.UseHealthChecks("/healthz", new HealthCheckOptions
             {

@@ -1,36 +1,39 @@
 ﻿using CustomerData.Application.Contracts.Persistence;
+using CustomerData.Domain.Entities;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CustomerData.Application.Features.Events.Commands.CreateEvent
+namespace CustomerData.Application.Features.Events.Commands.CreateAccount
 {
-    public class CreateTransactionCommandValidator : AbstractValidator<CreateTransactionCommand>
+    public class CreateAccountCommandValidator : AbstractValidator<CreateAccountCommand>
     {
-        private readonly ITransactionRepository _transactionRepository;
-        public CreateTransactionCommandValidator(ITransactionRepository transactionRepository)
+        private readonly IAccountRepository _accountRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        public CreateAccountCommandValidator(IAccountRepository accountRepository, UserManager<ApplicationUser> userManager)
         {
-            _transactionRepository = transactionRepository;
+            _accountRepository = accountRepository;
+            _userManager = userManager;
 
-            RuleFor(p => p.Amount)
-                .NotEmpty().WithMessage("{PropertyName} is required.")
-                .NotNull()
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
-
-            RuleFor(p => p.Date)
-                .NotEmpty().WithMessage("{PropertyName} is required.")
-                .NotNull()
-                .GreaterThan(DateTime.Now);
+             RuleFor(e => e)
+              .MustAsync(AccountUnique)
+              .WithMessage("An account for this user already exists.");
 
             RuleFor(e => e)
-                .MustAsync(EventNameAndDateUnique)
-                .WithMessage("An event with the same name and date already exists.");
+             .MustAsync(UserWithIdExists)
+             .WithMessage("An account for this user already exists.");
+        }
+        
+        private async Task<bool> AccountUnique(CreateAccountCommand e, CancellationToken token)
+        {
+            return !(await _accountRepository.IsAccountUnique(e.UserId));
         }
 
-        private async Task<bool> EventNameAndDateUnique(CreateTransactionCommand e, CancellationToken token)
+        private async Task<bool> UserWithIdExists(CreateAccountCommand e, CancellationToken token)
         {
-            return !(await _transactionRepository.IsEventNameAndDateUnique(e.Name, e.Date));
+            return await _userManager.FindByIdAsync(e.UserId) != null;
         }
     }
 }

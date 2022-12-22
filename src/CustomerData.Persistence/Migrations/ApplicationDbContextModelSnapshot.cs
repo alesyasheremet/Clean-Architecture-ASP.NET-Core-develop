@@ -17,6 +17,26 @@ namespace CustomerData.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
 
+            modelBuilder.Entity("CustomerData.Domain.Entities.Account", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Accounts");
+                });
+
             modelBuilder.Entity("CustomerData.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -89,9 +109,9 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4ec135f7-2d61-4429-bd9b-b1078ce19d95",
+                            Id = "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8c9db50-2719-488b-af4d-68db37a0c3cc",
+                            ConcurrencyStamp = "2b3c9304-c9ad-4393-8116-b0757978fcb1",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Amit",
@@ -101,15 +121,15 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "SUPERADMIN",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "1d37674d-d587-4535-96d8-1bf4c4a7e9d9",
+                            SecurityStamp = "97682725-e7ee-4315-bc36-9fa6670abea4",
                             TwoFactorEnabled = false,
                             UserName = "superadmin"
                         },
                         new
                         {
-                            Id = "9a66796d-c355-4b94-988a-9989fe3b673c",
+                            Id = "3e9a6677-f546-4959-9e70-c913a4da4a09",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b71e6ae5-7ba7-4f54-bc75-c933ca1a9f39",
+                            ConcurrencyStamp = "e26cb62b-d4a0-4881-a5a1-91c66375a847",
                             Email = "basicuser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Basic",
@@ -119,137 +139,35 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "BASICUSER",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "0b691690-4a32-4984-abb8-71a312d1d35f",
+                            SecurityStamp = "0c578a69-c5a4-42c8-b696-f6780c34de72",
                             TwoFactorEnabled = false,
                             UserName = "basicuser"
                         });
                 });
 
-            modelBuilder.Entity("CustomerData.Domain.Entities.Category", b =>
+            modelBuilder.Entity("CustomerData.Domain.Entities.Transaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("CreatedBy")
+                    b.Property<string>("AccountId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedDate")
+                    b.Property<Guid>("AccountId1")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("bb25560d-6976-4da4-8f85-eb64e526b48b"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Concert",
-                            Name = "Concert"
-                        },
-                        new
-                        {
-                            Id = new Guid("bfc8e57e-f25d-437d-8627-70fe79bdf3ee"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Musical",
-                            Name = "Musical"
-                        },
-                        new
-                        {
-                            Id = new Guid("6747446d-4c4f-4973-8a77-6858c57eeb1b"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Conference",
-                            Name = "Conference"
-                        });
-                });
-
-            modelBuilder.Entity("CustomerData.Domain.Entities.Event", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("TEXT");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("AccountId1");
 
-                    b.ToTable("Events");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("f5215504-f0ac-4ea1-841f-dc8f80c93f01"),
-                            CategoryId = new Guid("bfc8e57e-f25d-437d-8627-70fe79bdf3ee"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2023, 4, 21, 13, 59, 37, 784, DateTimeKind.Local).AddTicks(4551),
-                            Description = "Guitar music concert 2020",
-                            Name = "Guitar hits 2020"
-                        },
-                        new
-                        {
-                            Id = new Guid("9dd3dd8c-b076-4169-8bda-ed9e794c1b54"),
-                            CategoryId = new Guid("bfc8e57e-f25d-437d-8627-70fe79bdf3ee"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2023, 4, 21, 13, 59, 37, 784, DateTimeKind.Local).AddTicks(4595),
-                            Description = "Guitar music concert 2021",
-                            Name = "Guitar hits 2021"
-                        },
-                        new
-                        {
-                            Id = new Guid("fb688f57-ebf2-480a-bcac-7ccf56a17805"),
-                            CategoryId = new Guid("6747446d-4c4f-4973-8a77-6858c57eeb1b"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2023, 10, 21, 13, 59, 37, 784, DateTimeKind.Local).AddTicks(4600),
-                            Description = "The tech conference in c#",
-                            Name = "Event 2020"
-                        },
-                        new
-                        {
-                            Id = new Guid("960dedb4-83d2-44f3-b900-d57fa06a9376"),
-                            CategoryId = new Guid("6747446d-4c4f-4973-8a77-6858c57eeb1b"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2023, 8, 21, 13, 59, 37, 784, DateTimeKind.Local).AddTicks(4603),
-                            Description = "The tech conference in .net core",
-                            Name = "Event 2021"
-                        });
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -280,29 +198,29 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "90f042e7-24d9-4087-a4ec-04139b0af30d",
-                            ConcurrencyStamp = "d72dfbf3-4bfd-41de-9f31-ee2c8f08f6a1",
+                            Id = "3ea90126-397d-4dd6-b560-4f31485f3a64",
+                            ConcurrencyStamp = "ded44075-271f-442d-be44-ce23063e3838",
                             Name = "SuperAdmin",
                             NormalizedName = "SuperAdmin"
                         },
                         new
                         {
-                            Id = "da3a93df-9caa-4c01-915a-30e4f7e7fcd9",
-                            ConcurrencyStamp = "369e0926-9800-4636-967e-ae9454c6fbab",
+                            Id = "32dd0976-4c2b-47d7-a53d-adcf9cc58036",
+                            ConcurrencyStamp = "d948a46b-f2a1-41e4-b73a-d7bb0c09613b",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "ae67aea4-462f-42b0-9cf3-288aa5d53999",
-                            ConcurrencyStamp = "d34763c5-1845-4f12-9d3d-8568ceced9fc",
+                            Id = "9c0c2686-682b-4a6b-9c0e-de39a1c837bf",
+                            ConcurrencyStamp = "c7ba4c33-4a43-4799-9f4a-879a3160b31a",
                             Name = "Moderator",
                             NormalizedName = "Moderator"
                         },
                         new
                         {
-                            Id = "c6ecdd35-aa15-4195-9643-cf461a6315d9",
-                            ConcurrencyStamp = "92aabb17-aa1e-42fb-b8f7-9b678fc062ac",
+                            Id = "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4",
+                            ConcurrencyStamp = "a928a209-3352-4f40-a535-42e447bc4c30",
                             Name = "Basic",
                             NormalizedName = "Basic"
                         });
@@ -390,28 +308,28 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "9a66796d-c355-4b94-988a-9989fe3b673c",
-                            RoleId = "c6ecdd35-aa15-4195-9643-cf461a6315d9"
+                            UserId = "3e9a6677-f546-4959-9e70-c913a4da4a09",
+                            RoleId = "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4"
                         },
                         new
                         {
-                            UserId = "4ec135f7-2d61-4429-bd9b-b1078ce19d95",
-                            RoleId = "90f042e7-24d9-4087-a4ec-04139b0af30d"
+                            UserId = "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7",
+                            RoleId = "3ea90126-397d-4dd6-b560-4f31485f3a64"
                         },
                         new
                         {
-                            UserId = "4ec135f7-2d61-4429-bd9b-b1078ce19d95",
-                            RoleId = "da3a93df-9caa-4c01-915a-30e4f7e7fcd9"
+                            UserId = "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7",
+                            RoleId = "32dd0976-4c2b-47d7-a53d-adcf9cc58036"
                         },
                         new
                         {
-                            UserId = "4ec135f7-2d61-4429-bd9b-b1078ce19d95",
-                            RoleId = "ae67aea4-462f-42b0-9cf3-288aa5d53999"
+                            UserId = "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7",
+                            RoleId = "9c0c2686-682b-4a6b-9c0e-de39a1c837bf"
                         },
                         new
                         {
-                            UserId = "4ec135f7-2d61-4429-bd9b-b1078ce19d95",
-                            RoleId = "c6ecdd35-aa15-4195-9643-cf461a6315d9"
+                            UserId = "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7",
+                            RoleId = "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4"
                         });
                 });
 
@@ -434,15 +352,26 @@ namespace CustomerData.Persistence.Migrations
                     b.ToTable("UserTokens", "Identity");
                 });
 
-            modelBuilder.Entity("CustomerData.Domain.Entities.Event", b =>
+            modelBuilder.Entity("CustomerData.Domain.Entities.Account", b =>
                 {
-                    b.HasOne("CustomerData.Domain.Entities.Category", "Category")
-                        .WithMany("Events")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("CustomerData.Domain.Entities.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Category");
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CustomerData.Domain.Entities.Transaction", b =>
+                {
+                    b.HasOne("CustomerData.Domain.Entities.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -494,11 +423,6 @@ namespace CustomerData.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CustomerData.Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

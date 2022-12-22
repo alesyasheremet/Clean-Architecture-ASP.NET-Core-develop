@@ -5,9 +5,10 @@ namespace CustomerData.Domain.Entities
 {
     public class Transaction : BaseEntity<Guid>
     {
-        public string Amount { get; set; }
-        public string Description { get; set; }
+        public decimal Amount { get; set; }
         public DateTime Date { get; set; }
-        public Guid UserId { get; set; }
+        public Account Account { get; set; }
+
+        public string AccountId { get; set; }
     }
 }

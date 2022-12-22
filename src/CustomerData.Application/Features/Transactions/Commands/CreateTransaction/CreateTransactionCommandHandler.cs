@@ -13,22 +13,22 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
 {
     public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, Guid>
     {
-        private readonly IEventRepository _eventRepository;
+        private readonly ITransactionRepository _transactionRepository;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly ILogger<CreateTransactionCommandHandler> _logger;
 
-        public CreateTransactionCommandHandler(IMapper mapper, IEventRepository eventRepository, IEmailService emailService, ILogger<CreateTransactionCommandHandler> logger)
+        public CreateTransactionCommandHandler(IMapper mapper, ITransactionRepository transactionRepository, IEmailService emailService, ILogger<CreateTransactionCommandHandler> logger)
         {
             _mapper = mapper;
-            _eventRepository = eventRepository;
+            _transactionRepository = transactionRepository;
             _emailService = emailService;
             _logger = logger;
         }
 
         public async Task<Guid> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateTransactionCommandValidator(_eventRepository);
+            var validator = new CreateTransactionCommandValidator(_transactionRepository);
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Count > 0)
@@ -36,9 +36,9 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
                 throw new Exceptions.ValidationException(validationResult);
             }
 
-            var @event = _mapper.Map<Event>(request);
+            var @transaction = _mapper.Map<Transaction>(request);
 
-            @event = await _eventRepository.AddAsync(@event);
+            @transaction = await _transactionRepository.AddAsync(@transaction);
 
             // Todo: Sending email notification to admin address
             var email = new MailRequest() { ToEmail = "amit.naik8103@gmail.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
@@ -50,10 +50,10 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
             catch (Exception ex)
             {
                 //this shouldn't stop the API from doing else so this can be logged
-                _logger.LogError($"Mailing about event {@event.Id} failed due to an error with the mail service: {ex.Message}");
+                _logger.LogError($"Mailing about event {@transaction.Id} failed due to an error with the mail service: {ex.Message}");
             }
 
-            return @event.Id;
+            return @transaction.Id;
         }
     }
 }

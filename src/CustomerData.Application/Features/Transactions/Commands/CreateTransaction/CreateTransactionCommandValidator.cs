@@ -8,29 +8,22 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
 {
     public class CreateTransactionCommandValidator : AbstractValidator<CreateTransactionCommand>
     {
-        private readonly IEventRepository _eventRepository;
-        public CreateTransactionCommandValidator(IEventRepository eventRepository)
+        private readonly ITransactionRepository _transactionRepository;
+        public CreateTransactionCommandValidator(ITransactionRepository transactionRepository)
         {
-            _eventRepository = eventRepository;
-
+            _transactionRepository = transactionRepository;
+            /*
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
-
+            */
             RuleFor(p => p.Date)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .GreaterThan(DateTime.Now);
 
-            RuleFor(e => e)
-                .MustAsync(EventNameAndDateUnique)
-                .WithMessage("An event with the same name and date already exists.");
         }
 
-        private async Task<bool> EventNameAndDateUnique(CreateTransactionCommand e, CancellationToken token)
-        {
-            return !(await _eventRepository.IsEventNameAndDateUnique(e.Name, e.Date));
-        }
     }
 }

@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customerdata-transaction-api-k8s
+  labels:
+    app: customerdata-transaction-api-k8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: customerdata-transaction-api-k8s
+  template:
+    metadata:
+      labels:
+        app: customerdata-transaction-api-k8s
+    spec:
+      containers:
+      - name: customerdata-transaction-api-k8s
+        imagePullPolicy: IfNotPresent
+        image: customerdata-transaction-api-k8s:latest
+        ports:
+        - containerPort: 80

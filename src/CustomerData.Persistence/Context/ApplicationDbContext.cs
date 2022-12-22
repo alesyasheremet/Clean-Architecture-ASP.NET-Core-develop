@@ -14,28 +14,28 @@ using System.Threading.Tasks;
 
 namespace CustomerData.Persistence.Context
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>//AuditableContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        private readonly ILoggedInUserService _loggedInUserService;
         private readonly IDateTimeProvider _dateTimeProvider;
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options,
-            ILoggedInUserService loggedInUserService,
             IDateTimeProvider dateTimeProvider)
            : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            _loggedInUserService = loggedInUserService;
             _dateTimeProvider = dateTimeProvider;
         }
 
-        public DbSet<Event> Events { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.Entity<IdentityUserLogin<string>>().HasKey(x => new { x.UserId, x.LoginProvider });
+            builder.Entity<Account>().HasOne(x => x.User).WithMany().IsRequired();
+            builder.Entity<Transaction>().HasOne(x => x.Account).WithMany().IsRequired();
 
             #region Custom Identity table names
             //builder.HasDefaultSchema("Identity");
@@ -89,31 +89,7 @@ namespace CustomerData.Persistence.Context
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.CreatedBy = _loggedInUserService.UserId;
-                        entry.Entity.CreatedDate = _dateTimeProvider.UtcNow;
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.LastModifiedBy = _loggedInUserService.UserId;
-                        entry.Entity.LastModifiedDate = _dateTimeProvider.UtcNow;
-                        break;
-                }
-            }
-
             return await base.SaveChangesAsync(cancellationToken);
-
-            //if (_loggedInUserService.UserId == null)
-            //{
-              //  return await base.SaveChangesAsync(cancellationToken);
-           // }
-            //else
-           // {
-               // return await base.SaveChangesAsync(_loggedInUserService.UserId);
-            //}
         }
     }
 }

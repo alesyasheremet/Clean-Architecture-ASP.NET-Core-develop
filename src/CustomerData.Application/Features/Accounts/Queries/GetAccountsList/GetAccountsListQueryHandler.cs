@@ -7,23 +7,23 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CustomerData.Application.Features.Events.Queries.GetEventsList
+namespace CustomerData.Application.Features.Accounts.Queries.GetAccountsList
 {
     public class GetAccountsListQueryHandler : IRequestHandler<GetAccountsListQuery, List<AccountsListVm>>
     {
-        private readonly IGenericRepositoryAsync<Event> _eventRepository;
+        private readonly IGenericRepositoryAsync<Account> _accountRepository;
         private readonly IMapper _mapper;
 
-        public GetAccountsListQueryHandler(IMapper mapper, IGenericRepositoryAsync<Event> eventRepository)
+        public GetAccountsListQueryHandler(IMapper mapper, IGenericRepositoryAsync<Account> accountRepository)
         {
             _mapper = mapper;
-            _eventRepository = eventRepository;
+            _accountRepository = accountRepository;
         }
 
         public async Task<List<AccountsListVm>> Handle(GetAccountsListQuery request, CancellationToken cancellationToken)
         {
-            var allEvents = (await _eventRepository.ListAllAsync()).OrderBy(x => x.Date);
-            return _mapper.Map<List<AccountsListVm>>(allEvents);
+            var allAccounts = (await _accountRepository.ListAllAsync()).OrderBy(x => x.Date);
+            return _mapper.Map<List<AccountsListVm>>(allAccounts);
         }
     }
 }

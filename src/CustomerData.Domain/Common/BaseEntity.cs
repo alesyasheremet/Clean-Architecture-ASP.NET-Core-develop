@@ -2,7 +2,7 @@
 
 namespace CustomerData.Domain.Common
 {
-    public abstract class BaseEntity<TKey> : AuditableEntity, IHasKey<TKey>
+    public abstract class BaseEntity<TKey> : IHasKey<TKey>
     {
         [Key]
         public TKey Id { get; set; }

@@ -4,31 +4,34 @@ using CustomerData.Application.Contracts.Persistence;
 using CustomerData.Domain.Entities;
 using CustomerData.Domain.Services.Mail;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CustomerData.Application.Features.Events.Commands.CreateEvent
+namespace CustomerData.Application.Features.Events.Commands.CreateAccount
 {
-    public class CreateTransactionCommandHandler : IRequestHandler<CreateTransactionCommand, Guid>
+    public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Guid>
     {
-        private readonly ITransactionRepository _transactionRepository;
+        private readonly IAccountRepository _accountRepository;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
-        private readonly ILogger<CreateTransactionCommandHandler> _logger;
+        private readonly ILogger<CreateAccountCommandHandler> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CreateTransactionCommandHandler(IMapper mapper, ITransactionRepository transactionRepository, IEmailService emailService, ILogger<CreateTransactionCommandHandler> logger)
+        public CreateAccountCommandHandler(UserManager<ApplicationUser> userManager, IMapper mapper, IAccountRepository accountRepository, IEmailService emailService, ILogger<CreateAccountCommandHandler> logger)
         {
             _mapper = mapper;
-            _transactionRepository = transactionRepository;
+            _accountRepository = accountRepository;
             _emailService = emailService;
             _logger = logger;
+            _userManager = userManager;
         }
 
-        public async Task<Guid> Handle(CreateTransactionCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateTransactionCommandValidator(_transactionRepository);
+            var validator = new CreateAccountCommandValidator(_accountRepository, _userManager);
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Count > 0)
@@ -36,9 +39,11 @@ namespace CustomerData.Application.Features.Events.Commands.CreateEvent
                 throw new Exceptions.ValidationException(validationResult);
             }
 
-            var @event = _mapper.Map<Event>(request);
+            var user = await _userManager.FindByIdAsync(request.UserId);
 
-            @event = await _eventRepository.AddAsync(@event);
+            var @account = _mapper.Map<Account>(request);
+
+            @account = await _accountRepository.AddAsync(@account);
 
             // Todo: Sending email notification to admin address
             var email = new MailRequest() { ToEmail = "amit.naik8103@gmail.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
@@ -50,10 +55,10 @@ namespace CustomerData.Application.Features.Events.Commands.CreateEvent
             catch (Exception ex)
             {
                 //this shouldn't stop the API from doing else so this can be logged
-                _logger.LogError($"Mailing about event {@event.Id} failed due to an error with the mail service: {ex.Message}");
+                _logger.LogError($"Mailing about event {@account.Id} failed due to an error with the mail service: {ex.Message}");
             }
 
-            return @event.Id;
+            return @account.Id;
         }
     }
 }

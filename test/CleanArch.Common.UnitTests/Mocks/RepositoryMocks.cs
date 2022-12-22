@@ -9,45 +9,34 @@ namespace CustomerData.Common.UnitTests.Mocks
 
     public static class RepositoryMocks
     {
-        public static Mock<ICategoryRepository> GetCategoryRepository()
+        public static Mock<ITransactionRepository> GetTransactionRepository()
         {
             var concertGuid = Guid.NewGuid();
             var musicalGuid = Guid.NewGuid();
             var playGuid = Guid.NewGuid();
             var conferenceGuid = Guid.NewGuid();
 
-            var categories = new List<Category>
+            var transactions = new List<Transaction>
             {
-                new Category
+                new Transaction
                 {
-                    Id = concertGuid,
-                    Name = "Concerts"
+                    Id = Guid.NewGuid(),
+                    Amount = 12,
+                    AccountId = Guid.NewGuid().ToString()
+
+
                 },
-                new Category
-                {
-                    Id = musicalGuid,
-                    Name = "Musicals"
-                },
-                new Category
-                {
-                    Id = conferenceGuid,
-                    Name = "Conferences"
-                },
-                 new Category
-                {
-                    Id = playGuid,
-                    Name = "Plays"
-                }
+                
             };
 
-            var mockCategoryRepository = new Mock<ICategoryRepository>();
-            mockCategoryRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(categories);
+            var mockCategoryRepository = new Mock<ITransactionRepository>();
+            mockCategoryRepository.Setup(repo => repo.ListAllAsync()).ReturnsAsync(transactions);
 
-            mockCategoryRepository.Setup(repo => repo.AddAsync(It.IsAny<Category>())).ReturnsAsync(
-                (Category category) =>
+            mockCategoryRepository.Setup(repo => repo.AddAsync(It.IsAny<Transaction>())).ReturnsAsync(
+                (Transaction t) =>
                 {
-                    categories.Add(category);
-                    return category;
+                    transactions.Add(t);
+                    return t;
                 });
 
             return mockCategoryRepository;

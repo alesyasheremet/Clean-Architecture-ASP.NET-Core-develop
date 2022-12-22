@@ -27,7 +27,7 @@ namespace CustomerData.Persistence
             //    var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlite(@"DataSource=./mydatabase.db;");
             // Create our DbContext.
-            return new ApplicationDbContext(builder.Options, null, null);
+            return new ApplicationDbContext(builder.Options, null);
         }
     }
 }

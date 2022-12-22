@@ -8,77 +8,20 @@ namespace CustomerData.Persistence.Context.Seeds.Application
     public static class ApplicationContextSeed
     {
 
-        static Guid concertGuid = Guid.NewGuid();
-        static Guid musicalGuid = Guid.NewGuid();
-        static Guid conferenceGuid = Guid.NewGuid();
-
         public static void ApplicationSeed(this ModelBuilder modelBuilder)
         {
-            CreateCategory(modelBuilder);
-            CreateEvent(modelBuilder);
+            CreateTransactions(modelBuilder);
+            CreateAccounts(modelBuilder);
         }
 
-        private static void CreateEvent(ModelBuilder modelBuilder)
+        private static void CreateAccounts(ModelBuilder modelBuilder)
         {
-            List<Event> events = EventsList();
-            modelBuilder.Entity<Event>().HasData(events);
+            modelBuilder.Entity<Account>().HasData(new List<Account>());
         }
 
-        private static void CreateCategory(ModelBuilder modelBuilder)
+        private static void CreateTransactions(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>().HasData(CategoryList());
-        }
-
-        private static List<Category> CategoryList()
-        {
-            return new List<Category>()
-            {
-                new Category() {Id=concertGuid  , Name= "Concert", Description= "Concert"},
-                new Category() {Id=musicalGuid  , Name= "Musical", Description= "Musical"},
-                new Category() {Id=conferenceGuid, Name= "Conference", Description= "Conference"}
-            };
-        }
-
-        private static List<Event> EventsList()
-        {
-            return new List<Event>()
-            {
-                new Event
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Guitar hits 2020",
-                    Date = DateTime.Now.AddMonths(4),
-                    Description = "Guitar music concert 2020",
-                    CategoryId = musicalGuid
-                },
-
-                new Event
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Guitar hits 2021",
-                    Date = DateTime.Now.AddMonths(4),
-                    Description = "Guitar music concert 2021",
-                    CategoryId = musicalGuid
-                },
-
-                new Event
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Event 2020",
-                    Date = DateTime.Now.AddMonths(10),
-                    Description = "The tech conference in c#",
-                    CategoryId = conferenceGuid
-                },
-
-                new Event
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Event 2021",
-                    Date = DateTime.Now.AddMonths(8),
-                    Description = "The tech conference in .net core",
-                    CategoryId = conferenceGuid
-                },
-            };
+            modelBuilder.Entity<Transaction>().HasData(new List<Transaction>());
         }
 
     }
