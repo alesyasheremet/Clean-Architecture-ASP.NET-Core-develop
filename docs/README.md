@@ -1,19 +1,5 @@
 # Assignment implemented with the Clean architecture template
 <br />
-<p align="center">
-  <a href="#">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
-  </a>
-</p>
-
-## Clean Architecture
-
-Clean Architecture was introduced by by Robert C. Martin (Uncle Bob) to provide a better way to build applications in perspective of better testability, maintainability, and dependability on the infrastructures like databases and services
-
-Domain in center and building layer top of it. You can call it as Domain-centric Architecture too.
-
-Though layer architectures like onion, Hexagonal all vary somewhat in their details, they are very similar. All DDD approach have the same objective, which is the separation of concerns. 
-
 ### Reference
 
 * [Clean Architecture by Robert C. Martin (Uncle Bob)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
