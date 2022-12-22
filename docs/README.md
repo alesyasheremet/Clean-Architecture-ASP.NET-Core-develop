@@ -1,7 +1,4 @@
-![.NET Core](https://github.com/Amitpnk/Clean-Architecture-ASP.NET-Core/workflows/.NET%20Core/badge.svg)
-
-# Complete solution for Clean architecture using .NET Core
-
+# Assignment implemented with the Clean architecture template
 <br />
 <p align="center">
   <a href="#">
