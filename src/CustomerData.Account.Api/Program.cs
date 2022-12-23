@@ -17,9 +17,6 @@ namespace CustomerData.Api
             {
                 var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 applicationDbContext.Database.Migrate();
-
-                //var identityDbContext = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
-                //identityDbContext.Database.Migrate();
             }
 
             host.Run();

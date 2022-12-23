@@ -16,16 +16,9 @@ namespace CustomerData.Persistence
     {
         ApplicationDbContext IDesignTimeDbContextFactory<ApplicationDbContext>.CreateDbContext(string[] args)
         {
-            //            IConfigurationRoot configuration = new ConfigurationBuilder()
-            //              .SetBasePath(Directory.GetCurrentDirectory())
-            //        .AddJsonFile("appsettings.json")
-            //          .Build();
-            // Here we create the DbContextOptionsBuilder manually.        
+            string dbFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-
-            // Build connection string. This requires that you have a connectionstring in the appsettings.json
-            //    var connectionString = configuration.GetConnectionString("DefaultConnection");
-            builder.UseSqlite(@"DataSource=./mydatabase.db;");
+            builder.UseSqlite($"Data Source={Path.Join(dbFolder, "customerdb.db")}");
             // Create our DbContext.
             return new ApplicationDbContext(builder.Options, null);
         }

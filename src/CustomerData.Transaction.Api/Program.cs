@@ -13,15 +13,6 @@ namespace CustomerData.Transaction.Api
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            NativeLibraryHack.DoHack();
-            using (var scope = host.Services.CreateScope())
-            {
-                var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                applicationDbContext.Database.Migrate();
-
-                //var identityDbContext = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
-                //identityDbContext.Database.Migrate();
-            }
 
             host.Run();
         }

@@ -3,6 +3,7 @@ using System;
 using CustomerData.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerData.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221223150011_TransactionEntityRelationship")]
+    partial class TransactionEntityRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -109,9 +111,9 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2eebc6c6-9425-4f38-9ea7-b174ed592dbb",
+                            Id = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e89c9b5a-c8b5-4553-9e25-788c7ec343f9",
+                            ConcurrencyStamp = "fe0f7dce-f111-45dd-a4e3-8745c2ded27f",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Amit",
@@ -121,15 +123,15 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "SUPERADMIN",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "7e2e3433-a404-4f4b-b77d-b004c09299d9",
+                            SecurityStamp = "e00ec0f1-30d7-4fbc-a49a-917c80e0a476",
                             TwoFactorEnabled = false,
                             UserName = "superadmin"
                         },
                         new
                         {
-                            Id = "159516f3-db1c-4f03-88ba-d154983c718e",
+                            Id = "016a2093-b6d3-4804-8a30-fa07cbf61cd6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2351dc5e-71dd-42de-bc03-252247fe2155",
+                            ConcurrencyStamp = "b09b69ab-71b7-42ea-b942-a0034d7e1a1a",
                             Email = "basicuser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Basic",
@@ -139,7 +141,7 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "BASICUSER",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "d6059f61-6469-44e9-a232-ee1bbf7afaa7",
+                            SecurityStamp = "ca4bd726-1e23-4905-9d61-520abcffdedf",
                             TwoFactorEnabled = false,
                             UserName = "basicuser"
                         });
@@ -151,7 +153,10 @@ namespace CustomerData.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("AccountId")
+                    b.Property<string>("AccountId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("AccountId1")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Amount")
@@ -162,7 +167,7 @@ namespace CustomerData.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("AccountId1");
 
                     b.ToTable("Transactions");
                 });
@@ -195,29 +200,29 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "976fedf4-db0b-446e-82e9-f13959b52cfa",
-                            ConcurrencyStamp = "34a344e0-b4ea-4560-99f1-c309d31a60ce",
+                            Id = "742974c6-a091-457c-a2e3-da2858d0c24b",
+                            ConcurrencyStamp = "457203a0-32d2-476c-b2cc-69e7109be16c",
                             Name = "SuperAdmin",
                             NormalizedName = "SuperAdmin"
                         },
                         new
                         {
-                            Id = "1c13a246-197d-450a-b4af-16b00177c37f",
-                            ConcurrencyStamp = "705bc296-cca3-44be-9aaa-849feca03ca8",
+                            Id = "2f9d140f-a1d1-473b-91fb-9ab3ae430501",
+                            ConcurrencyStamp = "6e17f4ea-f10a-43ae-8687-a4cf1eba42e2",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "88ff44e9-6cd9-47f9-adda-bf49c92995ae",
-                            ConcurrencyStamp = "0715df65-9d35-4065-948c-1fdf663b141f",
+                            Id = "bb5952ca-a092-4887-b6b8-e9ef73411731",
+                            ConcurrencyStamp = "16b28ef4-c263-4b71-864a-c88379707853",
                             Name = "Moderator",
                             NormalizedName = "Moderator"
                         },
                         new
                         {
-                            Id = "0b4cf004-2c20-4c4e-9636-6a19f72a5fd4",
-                            ConcurrencyStamp = "1791cd6b-2625-4896-aeee-6489c1fbb439",
+                            Id = "12132dad-5b33-48bc-8152-f77d3992a7d3",
+                            ConcurrencyStamp = "745468bc-a45b-4452-b274-04e0fe6808c8",
                             Name = "Basic",
                             NormalizedName = "Basic"
                         });
@@ -305,28 +310,28 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "159516f3-db1c-4f03-88ba-d154983c718e",
-                            RoleId = "0b4cf004-2c20-4c4e-9636-6a19f72a5fd4"
+                            UserId = "016a2093-b6d3-4804-8a30-fa07cbf61cd6",
+                            RoleId = "12132dad-5b33-48bc-8152-f77d3992a7d3"
                         },
                         new
                         {
-                            UserId = "2eebc6c6-9425-4f38-9ea7-b174ed592dbb",
-                            RoleId = "976fedf4-db0b-446e-82e9-f13959b52cfa"
+                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
+                            RoleId = "742974c6-a091-457c-a2e3-da2858d0c24b"
                         },
                         new
                         {
-                            UserId = "2eebc6c6-9425-4f38-9ea7-b174ed592dbb",
-                            RoleId = "1c13a246-197d-450a-b4af-16b00177c37f"
+                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
+                            RoleId = "2f9d140f-a1d1-473b-91fb-9ab3ae430501"
                         },
                         new
                         {
-                            UserId = "2eebc6c6-9425-4f38-9ea7-b174ed592dbb",
-                            RoleId = "88ff44e9-6cd9-47f9-adda-bf49c92995ae"
+                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
+                            RoleId = "bb5952ca-a092-4887-b6b8-e9ef73411731"
                         },
                         new
                         {
-                            UserId = "2eebc6c6-9425-4f38-9ea7-b174ed592dbb",
-                            RoleId = "0b4cf004-2c20-4c4e-9636-6a19f72a5fd4"
+                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
+                            RoleId = "12132dad-5b33-48bc-8152-f77d3992a7d3"
                         });
                 });
 
@@ -364,7 +369,7 @@ namespace CustomerData.Persistence.Migrations
                 {
                     b.HasOne("CustomerData.Domain.Entities.Account", "Account")
                         .WithMany()
-                        .HasForeignKey("AccountId")
+                        .HasForeignKey("AccountId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -58,6 +58,8 @@ namespace CustomerData.Transaction.Api
 
             services.AddIdentityServices(Configuration);
 
+            services.AddHttpClient();
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowedOrigins", builder => builder
