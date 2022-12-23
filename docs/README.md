@@ -29,6 +29,9 @@ However, there is an error yet that has to be solved:
 
 This error is a dependency that cannot be found in the docker image. 
 
+The isntructions how to deploy to minikube can be found in my blog post:
+https://commoncodetopics.blogspot.com/2022/12/deploy-your-programs-in-minikube-with.html
+
 ## Technology stack
 
 Architecture Pattern
