@@ -42,6 +42,10 @@ This project provides complete solution which is built on Clean Architecture wit
 
 ![image](img/clean-architecture.png)
 
+The solution for the assignment is created using the following architecture:
+
+![image](img/customerdata-architecture.png)
+
 ## Technology stack
 
 Architecture Pattern
