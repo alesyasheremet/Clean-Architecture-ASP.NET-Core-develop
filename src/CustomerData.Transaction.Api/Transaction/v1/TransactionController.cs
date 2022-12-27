@@ -20,7 +20,7 @@ namespace CustomerData.Transaction.Api.Transaction.v1
         {
             var config = configuration.GetSection("Services");
 
-            _accountApiConnectionString = "https://localhost:44311/api/v1.0/Accounts"; //["AccountApi"];
+            _accountApiConnectionString = config["AccountApi"];
             _clientFactory = clientFactory;
         }
 
@@ -35,7 +35,6 @@ namespace CustomerData.Transaction.Api.Transaction.v1
             var account =
                 await httpResponseMessage.Content.ReadAsAsync<Account>();
 
-            createTransactionCommand.Account = account;
             var id = await Mediator.Send(createTransactionCommand);
             return Ok(id);
         }

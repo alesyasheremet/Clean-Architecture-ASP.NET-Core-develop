@@ -1,5 +1,8 @@
 ﻿using CustomerData.Domain.Common;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomerData.Domain.Entities
 {
@@ -9,5 +12,8 @@ namespace CustomerData.Domain.Entities
 
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
+
+        [ForeignKey("AccountId")]
+        public ICollection<Transaction> Transactions {get;set;}
     }
 }

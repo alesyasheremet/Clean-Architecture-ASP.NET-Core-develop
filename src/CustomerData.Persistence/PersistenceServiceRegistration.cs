@@ -15,6 +15,7 @@ namespace CustomerData.Persistence
         {
             string dbFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             services.AddDbContext<ApplicationDbContext>(options =>
+                //options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
                 options.UseSqlite($"Data Source={Path.Join(dbFolder, "customerdb.db")}"));
 

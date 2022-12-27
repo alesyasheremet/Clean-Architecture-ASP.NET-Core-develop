@@ -199,15 +199,14 @@ namespace CustomerData.Persistence.Migrations
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    AccountId1 = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AccountId = table.Column<string>(type: "TEXT", nullable: true)
+                    AccountId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transactions_Accounts_AccountId1",
-                        column: x => x.AccountId1,
+                        name: "FK_Transactions_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -217,67 +216,67 @@ namespace CustomerData.Persistence.Migrations
                 schema: "Identity",
                 table: "Role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "32dd0976-4c2b-47d7-a53d-adcf9cc58036", "d948a46b-f2a1-41e4-b73a-d7bb0c09613b", "Admin", "Admin" });
+                values: new object[] { "48527e3c-ca16-44bb-8ae1-b605d7379da1", "67d8d124-7fc0-46ed-8b17-7a89b9ff33f8", "Moderator", "Moderator" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "Role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "3ea90126-397d-4dd6-b560-4f31485f3a64", "ded44075-271f-442d-be44-ce23063e3838", "SuperAdmin", "SuperAdmin" });
+                values: new object[] { "d5421606-85de-43c1-83ce-08ab5d9b9279", "17af7053-f781-43ba-9eb8-ad118eaf6996", "Basic", "Basic" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "Role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4", "a928a209-3352-4f40-a535-42e447bc4c30", "Basic", "Basic" });
+                values: new object[] { "de244b15-2135-49ec-93cb-5fcd3cca4dcc", "00b175b6-9d38-4ced-8b1f-89e0827ba750", "Admin", "Admin" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "Role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "9c0c2686-682b-4a6b-9c0e-de39a1c837bf", "c7ba4c33-4a43-4799-9f4a-879a3160b31a", "Moderator", "Moderator" });
+                values: new object[] { "e0f4b886-30c5-4609-ba3e-6d95a7f7c4dd", "ecd85ec7-8c23-4b93-85fe-86c7d2b53fca", "SuperAdmin", "SuperAdmin" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "User",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "3e9a6677-f546-4959-9e70-c913a4da4a09", 0, "e26cb62b-d4a0-4881-a5a1-91c66375a847", "basicuser@gmail.com", true, "Basic", "User", false, null, "BASICUSER@GMAIL.COM", "BASICUSER", "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==", null, true, "0c578a69-c5a4-42c8-b696-f6780c34de72", false, "basicuser" });
+                values: new object[] { "675037c5-badf-4494-a14d-1ded280fa9f0", 0, "d55f3335-0a19-40c4-8625-73a8e1e307b3", "superadmin@gmail.com", true, "Amit", "Naik", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN", "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==", null, true, "5963ccdc-9a4c-4376-9cae-f3c0befece69", false, "superadmin" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "User",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7", 0, "2b3c9304-c9ad-4393-8116-b0757978fcb1", "superadmin@gmail.com", true, "Amit", "Naik", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN", "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==", null, true, "97682725-e7ee-4315-bc36-9fa6670abea4", false, "superadmin" });
+                values: new object[] { "ba90a93e-ef62-41de-b3fe-e80b387cb659", 0, "656723c6-3d09-4e86-ac17-5771a8c96fe5", "basicuser@gmail.com", true, "Basic", "User", false, null, "BASICUSER@GMAIL.COM", "BASICUSER", "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==", null, true, "2ce2cc95-613d-452f-976c-d80729b6519e", false, "basicuser" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4", "3e9a6677-f546-4959-9e70-c913a4da4a09" });
+                values: new object[] { "48527e3c-ca16-44bb-8ae1-b605d7379da1", "675037c5-badf-4494-a14d-1ded280fa9f0" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "32dd0976-4c2b-47d7-a53d-adcf9cc58036", "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7" });
+                values: new object[] { "d5421606-85de-43c1-83ce-08ab5d9b9279", "675037c5-badf-4494-a14d-1ded280fa9f0" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "3ea90126-397d-4dd6-b560-4f31485f3a64", "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7" });
+                values: new object[] { "de244b15-2135-49ec-93cb-5fcd3cca4dcc", "675037c5-badf-4494-a14d-1ded280fa9f0" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "76a3daa7-8e55-4b02-9e5a-e82bd6cf59d4", "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7" });
+                values: new object[] { "e0f4b886-30c5-4609-ba3e-6d95a7f7c4dd", "675037c5-badf-4494-a14d-1ded280fa9f0" });
 
             migrationBuilder.InsertData(
                 schema: "Identity",
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "9c0c2686-682b-4a6b-9c0e-de39a1c837bf", "5f0a7633-bba7-47b9-b3dc-97eb5a474ef7" });
+                values: new object[] { "d5421606-85de-43c1-83ce-08ab5d9b9279", "ba90a93e-ef62-41de-b3fe-e80b387cb659" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Accounts_UserId",
@@ -298,9 +297,9 @@ namespace CustomerData.Persistence.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transactions_AccountId1",
+                name: "IX_Transactions_AccountId",
                 table: "Transactions",
-                column: "AccountId1");
+                column: "AccountId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",

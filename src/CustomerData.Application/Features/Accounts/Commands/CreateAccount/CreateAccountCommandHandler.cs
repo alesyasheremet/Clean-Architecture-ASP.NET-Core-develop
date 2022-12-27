@@ -46,7 +46,7 @@ namespace CustomerData.Application.Features.Events.Commands.CreateAccount
             @account = await _accountRepository.AddAsync(@account);
 
             // Todo: Sending email notification to admin address
-            var email = new MailRequest() { ToEmail = "amit.naik8103@gmail.com", Body = $"A new event was created: {request}", Subject = "A new event was created" };
+            var email = new MailRequest() { ToEmail = "alesya.sheremet@gmail.com", Body = $"A new account was created: {request}", Subject = "A new event was created" };
 
             try
             {
@@ -55,7 +55,7 @@ namespace CustomerData.Application.Features.Events.Commands.CreateAccount
             catch (Exception ex)
             {
                 //this shouldn't stop the API from doing else so this can be logged
-                _logger.LogError($"Mailing about event {@account.Id} failed due to an error with the mail service: {ex.Message}");
+                _logger.LogError($"Mailing about account {@account.Id} failed due to an error with the mail service: {ex.Message}");
             }
 
             return @account.Id;

@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CustomerData.Application\CustomerData.Application.csproj" />
-    <ProjectReference Include="..\CleanArch.Common.UnitTests\CustomerData.Common.UnitTests.csproj" />
+    <ProjectReference Include="..\CustomerData.Common.UnitTests\CustomerData.Common.UnitTests.csproj" />
   </ItemGroup>
 
 </Project>

@@ -12,16 +12,15 @@ namespace CustomerData.Application.Features.Transactions.Commands.CreateTransact
         public CreateTransactionCommandValidator(ITransactionRepository transactionRepository)
         {
             _transactionRepository = transactionRepository;
-            /*
-            RuleFor(p => p.Name)
+
+            RuleFor(p => p.Amount)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
-                .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
-            */
+                .GreaterThan(0);
+            
             RuleFor(p => p.Date)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
-                .NotNull()
-                .GreaterThan(DateTime.Now);
+                .NotNull();
 
         }
 

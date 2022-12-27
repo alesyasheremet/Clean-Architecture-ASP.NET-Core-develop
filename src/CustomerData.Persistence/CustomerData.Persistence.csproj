@@ -35,5 +35,9 @@
     <ProjectReference Include="..\CustomerData.Application\CustomerData.Application.csproj" />
     <ProjectReference Include="..\CustomerData.CrossCuttingConcerns\CustomerData.CrossCuttingConcerns.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
   
 </Project>

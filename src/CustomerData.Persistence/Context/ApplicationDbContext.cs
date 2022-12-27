@@ -35,7 +35,7 @@ namespace CustomerData.Persistence.Context
             base.OnModelCreating(builder);
             builder.Entity<IdentityUserLogin<string>>().HasKey(x => new { x.UserId, x.LoginProvider });
             builder.Entity<Account>().HasOne(x => x.User).WithMany().IsRequired();
-            builder.Entity<Transaction>().HasOne(x => x.Account).WithMany().IsRequired();
+            builder.Entity<Account>().HasMany(x => x.Transactions);
 
             #region Custom Identity table names
             //builder.HasDefaultSchema("Identity");

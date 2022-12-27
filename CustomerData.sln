@@ -29,13 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.CrossCuttingConcerns", "src\CustomerData.CrossCuttingConcerns\CustomerData.CrossCuttingConcerns.csproj", "{61D66D62-ACAA-47F6-8ECE-3803F381AF0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Application.UnitTests", "test\CleanArch.Application.UnitTests\CustomerData.Application.UnitTests.csproj", "{11757CAA-BEAF-45D0-8B8B-FD9C400135C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Application.UnitTests", "test\CustomerData.Application.UnitTests\CustomerData.Application.UnitTests.csproj", "{11757CAA-BEAF-45D0-8B8B-FD9C400135C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Persistence.UnitTests", "test\CleanArch.Persistence.UnitTests\CustomerData.Persistence.UnitTests.csproj", "{863910A0-2FD0-48ED-9F60-1351CADA96D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Persistence.UnitTests", "test\CustomerData.Persistence.UnitTests\CustomerData.Persistence.UnitTests.csproj", "{863910A0-2FD0-48ED-9F60-1351CADA96D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Common.UnitTests", "test\CleanArch.Common.UnitTests\CustomerData.Common.UnitTests.csproj", "{31C3C0B1-1FC2-4C4F-8232-223468A49C73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Common.UnitTests", "test\CustomerData.Common.UnitTests\CustomerData.Common.UnitTests.csproj", "{31C3C0B1-1FC2-4C4F-8232-223468A49C73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Persistence.IntegrationTests", "test\CleanArch.Persistence.IntegrationTests\CustomerData.Persistence.IntegrationTests.csproj", "{4DA08C5F-9C74-4A17-9D87-9B074CB54D4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.Persistence.IntegrationTests", "test\CustomerData.Persistence.IntegrationTests\CustomerData.Persistence.IntegrationTests.csproj", "{4DA08C5F-9C74-4A17-9D87-9B074CB54D4F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerData.App", "src\CustomerData.App\CustomerData.App.csproj", "{1BD8E443-8C53-453E-A836-D0EBC3AF627F}"
 EndProject

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomerData.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221223150011_TransactionEntityRelationship")]
-    partial class TransactionEntityRelationship
+    [Migration("20221224221835_AddIdentity")]
+    partial class AddIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,9 +111,9 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
+                            Id = "675037c5-badf-4494-a14d-1ded280fa9f0",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fe0f7dce-f111-45dd-a4e3-8745c2ded27f",
+                            ConcurrencyStamp = "d55f3335-0a19-40c4-8625-73a8e1e307b3",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Amit",
@@ -123,15 +123,15 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "SUPERADMIN",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "e00ec0f1-30d7-4fbc-a49a-917c80e0a476",
+                            SecurityStamp = "5963ccdc-9a4c-4376-9cae-f3c0befece69",
                             TwoFactorEnabled = false,
                             UserName = "superadmin"
                         },
                         new
                         {
-                            Id = "016a2093-b6d3-4804-8a30-fa07cbf61cd6",
+                            Id = "ba90a93e-ef62-41de-b3fe-e80b387cb659",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b09b69ab-71b7-42ea-b942-a0034d7e1a1a",
+                            ConcurrencyStamp = "656723c6-3d09-4e86-ac17-5771a8c96fe5",
                             Email = "basicuser@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Basic",
@@ -141,7 +141,7 @@ namespace CustomerData.Persistence.Migrations
                             NormalizedUserName = "BASICUSER",
                             PasswordHash = "AQAAAAEAACcQAAAAEBLjouNqaeiVWbN0TbXUS3+ChW3d7aQIk/BQEkWBxlrdRRngp14b0BIH0Rp65qD6mA==",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "ca4bd726-1e23-4905-9d61-520abcffdedf",
+                            SecurityStamp = "2ce2cc95-613d-452f-976c-d80729b6519e",
                             TwoFactorEnabled = false,
                             UserName = "basicuser"
                         });
@@ -153,10 +153,7 @@ namespace CustomerData.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("AccountId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("AccountId1")
+                    b.Property<Guid>("AccountId")
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Amount")
@@ -167,7 +164,7 @@ namespace CustomerData.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId1");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Transactions");
                 });
@@ -200,29 +197,29 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "742974c6-a091-457c-a2e3-da2858d0c24b",
-                            ConcurrencyStamp = "457203a0-32d2-476c-b2cc-69e7109be16c",
+                            Id = "e0f4b886-30c5-4609-ba3e-6d95a7f7c4dd",
+                            ConcurrencyStamp = "ecd85ec7-8c23-4b93-85fe-86c7d2b53fca",
                             Name = "SuperAdmin",
                             NormalizedName = "SuperAdmin"
                         },
                         new
                         {
-                            Id = "2f9d140f-a1d1-473b-91fb-9ab3ae430501",
-                            ConcurrencyStamp = "6e17f4ea-f10a-43ae-8687-a4cf1eba42e2",
+                            Id = "de244b15-2135-49ec-93cb-5fcd3cca4dcc",
+                            ConcurrencyStamp = "00b175b6-9d38-4ced-8b1f-89e0827ba750",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "bb5952ca-a092-4887-b6b8-e9ef73411731",
-                            ConcurrencyStamp = "16b28ef4-c263-4b71-864a-c88379707853",
+                            Id = "48527e3c-ca16-44bb-8ae1-b605d7379da1",
+                            ConcurrencyStamp = "67d8d124-7fc0-46ed-8b17-7a89b9ff33f8",
                             Name = "Moderator",
                             NormalizedName = "Moderator"
                         },
                         new
                         {
-                            Id = "12132dad-5b33-48bc-8152-f77d3992a7d3",
-                            ConcurrencyStamp = "745468bc-a45b-4452-b274-04e0fe6808c8",
+                            Id = "d5421606-85de-43c1-83ce-08ab5d9b9279",
+                            ConcurrencyStamp = "17af7053-f781-43ba-9eb8-ad118eaf6996",
                             Name = "Basic",
                             NormalizedName = "Basic"
                         });
@@ -310,28 +307,28 @@ namespace CustomerData.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "016a2093-b6d3-4804-8a30-fa07cbf61cd6",
-                            RoleId = "12132dad-5b33-48bc-8152-f77d3992a7d3"
+                            UserId = "ba90a93e-ef62-41de-b3fe-e80b387cb659",
+                            RoleId = "d5421606-85de-43c1-83ce-08ab5d9b9279"
                         },
                         new
                         {
-                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
-                            RoleId = "742974c6-a091-457c-a2e3-da2858d0c24b"
+                            UserId = "675037c5-badf-4494-a14d-1ded280fa9f0",
+                            RoleId = "e0f4b886-30c5-4609-ba3e-6d95a7f7c4dd"
                         },
                         new
                         {
-                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
-                            RoleId = "2f9d140f-a1d1-473b-91fb-9ab3ae430501"
+                            UserId = "675037c5-badf-4494-a14d-1ded280fa9f0",
+                            RoleId = "de244b15-2135-49ec-93cb-5fcd3cca4dcc"
                         },
                         new
                         {
-                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
-                            RoleId = "bb5952ca-a092-4887-b6b8-e9ef73411731"
+                            UserId = "675037c5-badf-4494-a14d-1ded280fa9f0",
+                            RoleId = "48527e3c-ca16-44bb-8ae1-b605d7379da1"
                         },
                         new
                         {
-                            UserId = "c0b76e68-1bb2-4eb6-85e4-ca07cb3af6fe",
-                            RoleId = "12132dad-5b33-48bc-8152-f77d3992a7d3"
+                            UserId = "675037c5-badf-4494-a14d-1ded280fa9f0",
+                            RoleId = "d5421606-85de-43c1-83ce-08ab5d9b9279"
                         });
                 });
 
@@ -367,13 +364,11 @@ namespace CustomerData.Persistence.Migrations
 
             modelBuilder.Entity("CustomerData.Domain.Entities.Transaction", b =>
                 {
-                    b.HasOne("CustomerData.Domain.Entities.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId1")
+                    b.HasOne("CustomerData.Domain.Entities.Account", null)
+                        .WithMany("Transactions")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -425,6 +420,11 @@ namespace CustomerData.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CustomerData.Domain.Entities.Account", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }
