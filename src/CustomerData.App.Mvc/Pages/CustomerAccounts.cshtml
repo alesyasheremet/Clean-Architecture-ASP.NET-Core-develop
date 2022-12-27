@@ -1,0 +1,28 @@
+﻿@page
+@model CustomerAccountsModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<br />
+<br />
+<table class="table">
+    <tdead>
+        <tr>
+            <th>Date</th>
+            <th>AccountId</th>
+            <th>UserId</th>
+        </tr>
+    </tdead>
+    <tbody>
+        @foreach (var item in Model.accounts)
+        {
+            <tr>
+                <td>@item.Date</td>
+                <td>@item.AccountId</td>
+                <td>@item.UserId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

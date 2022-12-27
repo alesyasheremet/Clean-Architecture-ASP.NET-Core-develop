@@ -1,7 +1,16 @@
+using CustomerData.App.Mvc.Services;
+using CustomerData.App.Mvc.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICustomerAccountsService, CustomerAccountsService>();
+builder.Services.AddHttpClient<ICustomerAccountsService, CustomerAccountsService>(c =>
+c.BaseAddress = new Uri("https://localhost:44311/"));
+
 
 var app = builder.Build();
 
