@@ -22,7 +22,7 @@ Run multiple projects.
 The swagger documentation api will open in the browser.
 Inspect the database to find the userId, use the UserId to call the api to create the account or other apis.
 
-The isntructions how to deploy to minikube can be found in my blog post:
+The instructions how to deploy to minikube can be found in my blog post:
 https://commoncodetopics.blogspot.com/2022/12/deploy-your-programs-in-minikube-with.html
 
 ## Technology stack
