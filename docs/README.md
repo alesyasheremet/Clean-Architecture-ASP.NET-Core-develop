@@ -17,17 +17,10 @@ The solution for the assignment is created using the following architecture:
 ## Instructions
 
 Open the solution in Visual Studio 2022. Set multiple running projects and select CustomerData.Transaction.Api and CustomerData.Account.Api.
+The user interface is implemented in the project CustomerData.App.Mvc
 Run multiple projects.
 The swagger documentation api will open in the browser.
 Inspect the database to find the userId, use the UserId to call the api to create the account or other apis.
-
-The projects also contain the Docker files and deployment.yaml files. These files can be used to build the docker images and deploy them to minikube.
-However, there is an error yet that has to be solved:
-
- ---> System.DllNotFoundException: Unable to load shared library 'e_sqlite3' or one of its dependencies. In order to help diagnose loading problems, consider setting the LD_DEBUG environment variable: libe_sqlite3: cannot open shared object file: No such file or directory
-   at SQLitePCL.SQLite3Provider_e_sqlite3.NativeMethods.sqlite3_libversion_number()
-
-This error is a dependency that cannot be found in the docker image. 
 
 The isntructions how to deploy to minikube can be found in my blog post:
 https://commoncodetopics.blogspot.com/2022/12/deploy-your-programs-in-minikube-with.html
